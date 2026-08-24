@@ -6,10 +6,12 @@ The investigation started with a reported suspicious payroll/HR-themed email and
 <br />
 
 
-<h2>Languages and Utilities Used</h2>
+<h2>Tools</h2>
 
-- <b>PowerShell</b> 
-- <b>Diskpart</b>
+- <b>Microsoft data explorer</b> 
+- <b>KQL</b>
+- <b>Visual studio</b>
+- <b>Authentication Logs</b>
 
 <h2>Environments Used </h2>
 
