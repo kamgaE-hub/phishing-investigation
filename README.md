@@ -5,7 +5,6 @@ I completed a hands-on simulated SOC investigation into a targeted phishing camp
 The investigation started with a reported suspicious payroll/HR-themed email and progressed through email analysis, header investigation, threat intelligence enrichment, campaign scoping and authentication-log analysis.
 <br />
 
-
 <h2>Tools</h2>
 
 - <b>Microsoft data explorer</b> 
