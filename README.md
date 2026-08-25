@@ -19,8 +19,8 @@ The investigation started with a reported suspicious payroll/HR-themed email and
 <h2>Program walk-through:</h2>
 
 <p align="center">
-Launch the utility: <br/>
-<img src="https://i.imgur.com/62TgaWL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+Email investigation: <br/> Opened suspected payroll-themed email on Visual studio and analysed them using sender information, email headers, SPF/DKIM/DMARC results and domain analysis. Identified a lookalike domain and indicators associated with the phishing campaign, which were then used to support further investigation and campaign scoping.
+<img src="https://github.com/kamgaE-hub/phishing-investigation/blob/main/email-analysis.png"/>
 <br />
 <br />
 Select the disk:  <br/>
