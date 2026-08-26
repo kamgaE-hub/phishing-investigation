@@ -80,7 +80,17 @@ I reviewed the users, IP address, location, time of activity and applications us
 
 *Figure 5 – KQL results showing successful sign-ins from suspicious IP range*
 
+<h3> Account Sign-In Ivestigation:</h3>
 
+After identifying Ryan Boyd as one of the users who submitted credentials through the phishing email, I decided to go further and review his sign-in activity.
+
+The results showed successful sign-ins from Amsterdam using 198.18.7.200, Windows 11 and Chrome, between other sign-ins from London using iOS and Safari.
+
+The Amsterdam activity occurred after the phishing interaction and was inconsistent with the other sign-in activity shown for the user. Based on the timing, location, IP address and device information, I treated the Amsterdam sign-ins as suspicious and likely the result of the stolen credentials.
+
+<img src="https://github.com/kamgaE-hub/phishing-investigation/blob/main/evidence/Boyd-sign-in-investigation.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+*Figure 6 – Ryan Boyd's sign-in activity showing the suspicious Amsterdam sessions between London activity*
 
 Select the disk:  <br/>
 <img src="https://i.imgur.com/tcTyMUE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
