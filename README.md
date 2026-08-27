@@ -1,7 +1,7 @@
 <h1>Cloudora - Simulated Phishing Campaign Investigation </h1>
 
 <h2>Description</h2>
-I completed a hands-on simulated SOC investigation into a targeted phishing campaign against Cloudora, a fictional organisation.
+I completed a hands-on simulated SOC investigation into a targeted phishing campaign against Cloudora, a fictional organisation based in the UK.
 The investigation started with a reported suspicious payroll/HR-themed email and progressed through email analysis, header investigation, threat intelligence enrichment, campaign scoping and authentication-log analysis.
 <br />
 
@@ -80,17 +80,29 @@ I reviewed the users, IP address, location, time of activity and applications us
 
 *Figure 5 – KQL results showing successful sign-ins from suspicious IP range*
 
-<h3> Account Sign-In Ivestigation:</h3>
+<h3> Account Sign-In Ivestigation - Ryan Boyd:</h3>
 
-After identifying Ryan Boyd as one of the users who submitted credentials through the phishing email, I decided to go further and review his sign-in activity.
+After identifying Ryan Boyd as one of the users who submitted credentials through the phishing email, I went ahead to review his sign-in activity.
 
-The results showed successful sign-ins from Amsterdam using 198.18.7.200, Windows 11 and Chrome, between other sign-ins from London using iOS and Safari.
+Ryan's normal activity was from London, UK, using an iOS device and Safari. Shortly after the phishing interaction, his account was successfully accessed from 198.18.7.200 in Amsterdam, Netherlands, using Windows 11 and Chrome.
 
-The Amsterdam activity occurred after the phishing interaction and was inconsistent with the other sign-in activity shown for the user. Based on the timing, location, IP address and device information, I treated the Amsterdam sign-ins as suspicious and likely the result of the stolen credentials.
+The Amsterdam sign-ins were inconsistent with the user's normal activity and occurred after his credentials had been submitted to the phishing page. I therefore identified the Amsterdam activity as malicious sign-in activity resulting from the phishing attack.
 
 <img src="https://github.com/kamgaE-hub/phishing-investigation/blob/main/evidence/Boyd-sign-in-investigation.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 *Figure 6 – Ryan Boyd's sign-in activity showing the suspicious Amsterdam sessions between London activity*
+
+<h3> Account Sign-In Ivestigation - Freya Lynn:</h3>
+
+After identifying Freya Lynn as another user who submitted credentials through the phishing page, I reviewed her sign-in activity.
+
+Freya's normal activity was from Manchester, UK, using an iOS device and Mobile Safari. Her account was then successfully accessed three times from 198.18.7.200 in Amsterdam, Netherlands, using Windows 11 and Chrome.
+
+The Amsterdam activity was inconsistent with her normal sign-in pattern and occurred in the same period as the phishing activity. Based on the credential submission, timing, IP address, location and change in device, I identified these Amsterdam sign-ins as malicious activity resulting from the phishing attack. 
+
+<img src="https://github.com/kamgaE-hub/phishing-investigation/blob/main/evidence/Freya-sign-in-investigation.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+*Figure 7 – Freya Lynn sign-in activity showing the suspicious Amsterdam sessions between London activity*
 
 Select the disk:  <br/>
 <img src="https://i.imgur.com/tcTyMUE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
