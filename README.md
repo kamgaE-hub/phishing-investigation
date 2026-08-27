@@ -104,6 +104,16 @@ The Amsterdam activity was inconsistent with her normal sign-in pattern and occu
 
 *Figure 7 – Freya Lynn sign-in activity showing the suspicious Amsterdam sessions between London activity*
 
+<h2> Actions To Take:</h2>
+
+1. Revoked all active sessions and refresh tokens for freya.lynn and ryan.boyd
+2. Reset credentials for both compromised accounts
+3. Required and re-registered MFA on both accounts
+4. Blocked infrastructure: 198.18.44.10, 198.18.44.23,198.18.51.7, 198.18.7.200 and cloudora-hr-portal.example (all subdomains) at mail gateway and web proxy
+5. 
+
+<h2> Actions Takes:</h2>
+
 Select the disk:  <br/>
 <img src="https://i.imgur.com/tcTyMUE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
