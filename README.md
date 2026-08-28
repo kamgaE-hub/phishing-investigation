@@ -14,7 +14,7 @@ The investigation started with a reported suspicious payroll/HR-themed email and
 
 <h2>Environments Used </h2>
 
-- <b>Windows 10</b> (21H2)
+- <b>Windows 10</b>
 
 <h2>Program walk-through:</h2>
 
@@ -48,7 +48,16 @@ the message was legitimate or malicious.
 
 *Figure 2 – Message trace analysis showing campaign, sender, authentication and delivery results*
 
-<h3>Phishing Link and Credentials Submissiom:</h3>
+<h3>Identify users who received and interacted with the phishing email:</h3>
+
+I used KQL to identify users who clicked the phishing link and then checked whether the phishing email was successfully delivered to those users.
+30 users received and clicked the phishing email. I used this list as the starting point for the next stage of the investigation.
+
+<img src="https://github.com/kamgaE-hub/phishing-investigation/blob/main/evidence/Who%20Interacted%20with%20the%20phishing%20email.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+*Figure 3 – Those who interacted with the phishing email*
+
+<h3>Phishing Link and Credentials Submission:</h3>
 
 I checked the click activity from the phishing emails to see which users followed the links and whether they submitted their credentials.
 
@@ -56,7 +65,7 @@ The results showed six users who clicked the phishing links. Two of them — Rya
 
 <img src="https://github.com/kamgaE-hub/phishing-investigation/blob/main/evidence/Phishing-Link-credential-submission.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-*Figure 3 - KQL results showing users who clicked the phishing links and whether credentials were submitted*
+*Figure 4 - KQL results showing users who clicked the phishing links and whether credentials were submitted*
 
 <h3> Credential Submission - Sign-In Investigation:</h3>
 
@@ -68,7 +77,7 @@ This helped me identify the sign-ins that needed further investigation.
 
 <img src="https://github.com/kamgaE-hub/phishing-investigation/blob/main/evidence/Credentials%20%26%20Sig-In%20Investigation.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-*Figure 4 – KQL results showing successful sign-ins for users who submitted their credentials*
+*Figure 5 – KQL results showing successful sign-ins for users who submitted their credentials*
 
 <h3> Sign-In Investigation:</h3>
 
@@ -78,7 +87,7 @@ I reviewed the users, IP address, location, time of activity and applications us
 
 <img src="https://github.com/kamgaE-hub/phishing-investigation/blob/main/evidence/Suspicious-sign-in-investigation.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-*Figure 5 – KQL results showing successful sign-ins from suspicious IP range*
+*Figure 6 – KQL results showing successful sign-ins from suspicious IP range*
 
 <h3> Account Sign-In Ivestigation - Ryan Boyd:</h3>
 
@@ -90,7 +99,7 @@ The Amsterdam sign-ins were inconsistent with the user's normal activity and occ
 
 <img src="https://github.com/kamgaE-hub/phishing-investigation/blob/main/evidence/Boyd-sign-in-investigation.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-*Figure 6 – Ryan Boyd's sign-in activity showing the suspicious Amsterdam sessions between London activity*
+*Figure 7 – Ryan Boyd's sign-in activity showing the suspicious Amsterdam sessions between London activity*
 
 <h3> Account Sign-In Ivestigation - Freya Lynn:</h3>
 
@@ -102,100 +111,27 @@ The Amsterdam activity was inconsistent with her normal sign-in pattern and occu
 
 <img src="https://github.com/kamgaE-hub/phishing-investigation/blob/main/evidence/Freya-sign-in-investigation.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-*Figure 7 – Freya Lynn sign-in activity showing the suspicious Amsterdam sessions between London activity*
+*Figure 8 – Freya Lynn sign-in activity showing the suspicious Amsterdam sessions between London activity*
 
-<h2> Actions To Take:</h2>
+<h2>Overall Findings:</h2>
+
+The investigation confirmed a phishing campaign targeting Cloudora users.
+
+1. **2 accounts were confirmed compromised:** Both Freya.lynn and Ryan.Boyd clicked and submitted credentials to the phishing page, which later showed suspicious sign-ins from the same Amsterdam IP (198.18.7.200) on Windows 11/Chrome device never seen on their account.
+
+2. **4 users clicked but were not confirmed compromised:** seth.lane, chloe.price, hugo.marsh and dina.said clicked the phishing link, but no credentials were submitted and no suspicious sign-ins were found. Precautionary follow-up was recommended.
+
+3. Thirty delivered-to recipients did not click and form the near-miss list for user communications.  A further four
+(emma.hayes, maya.chen, nina.cole, ruth.dean) were targeted but had every copy quarantined by Exchange
+Online Protection, so never saw the message.
+
+Overall, the investigation identified 2 confirmed compromises, 4 exposed users requiring follow-up, and no evidence of compromise among the remaining targeted users. 
+
+<h2> Recommended Actions To Take:</h2>
 
 1. Revoked all active sessions and refresh tokens for freya.lynn and ryan.boyd
-2. Reset credentials for both compromised accounts
-3. Required and re-registered MFA on both accounts
-4. Blocked infrastructure: 198.18.44.10, 198.18.44.23,198.18.51.7, 198.18.7.200 and cloudora-hr-portal.example (all subdomains) at mail gateway and web proxy
-5. 
+3. Reset credentials for both compromised accounts and the 4 exposed accounts
+4. Required and re-registered MFA on all accounts
+5. Blocked infrastructure: 198.18.44.10, 198.18.44.23,198.18.51.7, 198.18.7.200 and cloudora-hr-portal.example (all        subdomains) at mail gateway and web proxy
+6. Carry out awareness sessions with the team. 
 
-<h2> Actions Takes:</h2>
-
-Select the disk:  <br/>
-<img src="https://i.imgur.com/tcTyMUE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Enter the number of passes: <br/>
-<img src="https://i.imgur.com/nCIbXbg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Confirm your selection:  <br/>
-<img src="https://i.imgur.com/cdFHBiU.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Wait for process to complete (may take some time):  <br/>
-<img src="https://i.imgur.com/JL945Ga.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Sanitization complete:  <br/>
-<img src="https://i.imgur.com/K71yaM2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-
-<!--
- ```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
-```
---!>
-<br />
-
-
-<h2>Languages and Utilities Used</h2>
-
-- <b>PowerShell</b> 
-- <b>Diskpart</b>
-
-<h2>Environments Used </h2>
-
-- <b>Windows 10</b> (21H2)
-
-<h2>Program walk-through:</h2>
-
-<p align="center">
-Launch the utility: <br/>
-<img src="https://i.imgur.com/62TgaWL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Select the disk:  <br/>
-<img src="https://i.imgur.com/tcTyMUE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Enter the number of passes: <br/>
-<img src="https://i.imgur.com/nCIbXbg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Confirm your selection:  <br/>
-<img src="https://i.imgur.com/cdFHBiU.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Wait for process to complete (may take some time):  <br/>
-<img src="https://i.imgur.com/JL945Ga.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Sanitization complete:  <br/>
-<img src="https://i.imgur.com/K71yaM2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-
-<!--
- ```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
-```
---!>
