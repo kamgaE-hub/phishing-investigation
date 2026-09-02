@@ -127,7 +127,17 @@ Online Protection, so never saw the message.
 
 Overall, the investigation identified 2 confirmed compromises, 4 exposed users requiring follow-up, and no evidence of compromise among the remaining targeted users. 
 
-<h2> Recommended Actions To Take:</h2>
+
+
+<h2>MITRE ATT&CK Summary</h2>
+
+| MITRE ATT&CK Technique               | ID            | Evidence                                                 |
+| ------------------------------------ | ------------- | -------------------------------------------------------------------------------------- |
+| **Phishing: Spearphishing Link**     | T1566.002 | Users received an email containing a phishing link                                     |
+| **User Execution: Malicious Link**   | T1204.001 | 4 users clicked the phishing link                                                      |
+| **Valid Accounts**                   | T1078     | Stolen credentials used for suspicious sign-ins                                   |
+
+<h2> Recommended Actions:</h2>
 
 1. Revoked all active sessions and refresh tokens for freya.lynn and ryan.boyd
 3. Reset credentials for both compromised accounts and the 4 exposed accounts
