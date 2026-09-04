@@ -18,19 +18,19 @@ The investigation started with a reported suspicious payroll/HR-themed email and
 
 <h2>Program walk-through:</h2>
 
-<h3> Email investigation:</h3>
+<h3> Step 1: Email investigation</h3>
 I reviewed the email headers of the suspicious messages and compared their authentication results with a genuine Cloudora email.
 
 The comparison showed that the phishing emails used different methods. One failed the email authentication checks, while another passed because it was authenticated using the attacker's lookalike domain. The genuine Cloudora email passed authentication using the real cloudora.io domain.
 This helped me confirm that the sender domain and authentication results needed to be checked together when deciding whether an email was legitimate.
 
 <br />
-<img src="https://github.com/kamgaE-hub/phishing-investigation/blob/main/email-analysis.png"/>
+<img src="https://github.com/kamgaE-hub/phishing-investigation/blob/main/evidence/email-analysis.png"/>
 
 *Figure 1 – Message trace analysis showing campaign, sender, authentication and delivery results* 
 <br />
 
-<h3> Email Delivery & Authentication Analysis:</h3>
+<h3> Step 2: Email Delivery & Authentication Analysis</h3>
 
 After uploading the data into Azure Data Explorer, I used KQL to analyse the message-trace data in order to understand how the phishing campaign was distributed and how the different email variants were handled by the
 mail system.
@@ -48,7 +48,7 @@ the message was legitimate or malicious.
 
 *Figure 2 – Message trace analysis showing campaign, sender, authentication and delivery results*
 
-<h3>Identify users who received and interacted with the phishing email:</h3>
+<h3>Step 3: Identify users who received and interacted with the phishing email</h3>
 
 I used KQL to identify users who clicked the phishing link and then checked whether the phishing email was successfully delivered to those users.
 30 users received and clicked the phishing email. I used this list as the starting point for the next stage of the investigation.
@@ -57,7 +57,7 @@ I used KQL to identify users who clicked the phishing link and then checked whet
 
 *Figure 3 – Those who interacted with the phishing email*
 
-<h3>Phishing Link and Credentials Submission:</h3>
+<h3>Step 4: Phishing Link and Credentials Submission</h3>
 
 I checked the click activity from the phishing emails to see which users followed the links and whether they submitted their credentials.
 
@@ -67,7 +67,7 @@ The results showed six users who clicked the phishing links. Two of them — Rya
 
 *Figure 4 - KQL results showing users who clicked the phishing links and whether credentials were submitted*
 
-<h3> Credential Submission - Sign-In Investigation:</h3>
+<h3>Step 5: Credential Submission - Sign-In Investigation</h3>
 
 I used KQL to find the users who submitted their credentials through the phishing emails and then checked their successful sign-ins.
 
@@ -79,7 +79,7 @@ This helped me identify the sign-ins that needed further investigation.
 
 *Figure 5 – KQL results showing successful sign-ins for users who submitted their credentials*
 
-<h3> Sign-In Investigation:</h3>
+<h3>Step 6: Sign-In Investigation</h3>
 
 I used KQL to look for successful sign-ins from the IP range associated with the suspicious activity. The results showed sign-ins for two Cloudora users from the Netherlands.
 
@@ -89,7 +89,7 @@ I reviewed the users, IP address, location, time of activity and applications us
 
 *Figure 6 – KQL results showing successful sign-ins from suspicious IP range*
 
-<h3> Account Sign-In Ivestigation - Ryan Boyd:</h3>
+<h3>Step 7: Account Sign-In Ivestigation - Ryan Boyd</h3>
 
 After identifying Ryan Boyd as one of the users who submitted credentials through the phishing email, I went ahead to review his sign-in activity.
 
@@ -101,7 +101,7 @@ The Amsterdam sign-ins were inconsistent with the user's normal activity and occ
 
 *Figure 7 – Ryan Boyd's sign-in activity showing the suspicious Amsterdam sessions between London activity*
 
-<h3> Account Sign-In Ivestigation - Freya Lynn:</h3>
+<h3>Step 8: Account Sign-In Ivestigation - Freya Lynn</h3>
 
 After identifying Freya Lynn as another user who submitted credentials through the phishing page, I reviewed her sign-in activity.
 
